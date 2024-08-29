@@ -1,0 +1,14 @@
+{
+  "name": "@hdev/analytics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --passWithNoTests"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@segment/analytics-next": "^1.72.1"
+  }
+}

@@ -1,6 +1,7 @@
 import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { PHProvider } from '@hdev/posthog/app/provider';
+import { SegmentPageView } from '@hdev/analytics/app/AnalyticsProvider';
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <GoogleTagManager gtmId={GTM_ID}/>
+      <SegmentPageView />
       <PHProvider>
         <body className={inter.className}>{children}</body>
       </PHProvider>
