@@ -1,3 +1,4 @@
+import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -14,8 +15,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const GTM_ID= process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!
+  const GTM_SRC=`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`
   return (
     <html lang="en">
+      <GoogleTagManager gtmId={GTM_ID}/>
       <body className={inter.className}>{children}</body>
     </html>
   );

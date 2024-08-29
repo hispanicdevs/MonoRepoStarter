@@ -8,10 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --passWithNoTests"
-
   },
   "dependencies": {
     "@hdev/ui": "*",
+    "@next/third-parties": "^14.2.7",
     "next": "14.2.7",
     "react": "^18",
     "react-dom": "^18"
