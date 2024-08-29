@@ -1,5 +1,6 @@
 import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
+import { PHProvider } from '@hdev/posthog/app/provider';
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -20,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <GoogleTagManager gtmId={GTM_ID}/>
-      <body className={inter.className}>{children}</body>
+      <PHProvider>
+        <body className={inter.className}>{children}</body>
+      </PHProvider>
     </html>
   );
 }

@@ -1,0 +1,14 @@
+{
+  "name": "@hdev/posthog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --passWithNoTests"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "posthog-js": "^1.157.2"
+  }
+}
