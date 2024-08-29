@@ -190,3 +190,65 @@ To publish packages to a private npm organization scope, **remove** the followin
 -  "access": "public"
 - },
 ```
+
+
+## Memories
+
+### 1. Install turborepo with design-system example
+` npx create-turbo@latest --example [design-system] `
+
+- This example installed: 
+  - apps/docs (with storybook) 
+  - packages/eslint-config
+  - packages/typescript-config
+  - packages/ui
+
+### 2. fix eslint issues in storybook
+- add to .eslintrc
+  ```js
+  parserOptions: {
+      project: "tsconfig.json",
+      tsconfigRootDir: __dirname,
+      sourceType: "module",
+    },
+  ```
+- remove from package.json
+```
+ "exports": {
+    "./button": {
+      "types": "./src/button.tsx",
+      "import": "./dist/button.mjs",
+      "require": "./dist/button.js"
+    }
+  },
+```
+
+### 3. enable tests
+
+- refactor ui structure, create components/ folder
+- create a button with test
+- update storybook imports
+- add test task to turbo.json, depends on ^test
+- install jest
+`npm install jest --workspace=@hdev/ui --save-dev`
+- install testing-library/react testing-libray/dom
+`npm install --workspace=@hdev/ui --save-dev @testing-library/react @testing-library/dom`
+- install types/jest
+`npm i --workspace=@hdev/ui  --save-dev @types/jest`
+- install ts-jest
+`npm install --workspace=@hdev/ui --save-dev ts-jest`
+- create jest.config.js
+  ```js
+  module.exports = {
+    preset: 'ts-jest',
+    testEnvironment: 'jsdom',
+    transform: {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+  };
+  ```
+- enable jsdom environment
+  - `npm install --workspace=@hdev/ui --save-dev jest-environment-jsdom`
+  - udpate .eslintrc.js the jsdom environment
+    `testEnvironment: 'jsdom'`
+
